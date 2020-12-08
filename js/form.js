@@ -1,7 +1,7 @@
 let botaoAdicionar = document.querySelector("#adicionar-paciente")
     botaoAdicionar.addEventListener("click", function(event){ // This is an anonymous function
       event.preventDefault()
-      
+
       let form = document.querySelector ("#form-adiciona")
         let paciente = obtemPaciente(form)
         let pacienteTr = montaTr(paciente)
@@ -11,6 +11,7 @@ let botaoAdicionar = document.querySelector("#adicionar-paciente")
                 exibeMensagensDeErro(erros);
                 return;
             }
+
 
         let tabela = document.querySelector("#tabela-pacientes")
         tabela.appendChild(pacienteTr)
@@ -22,10 +23,10 @@ let botaoAdicionar = document.querySelector("#adicionar-paciente")
 
     function obtemPaciente(form){
         let paciente = {
-            nome: form.nome.value, 
-            peso: form.peso.value, 
-            altura: form.altura.value, 
-            gordura: form.gordura.value, 
+            nome: form.nome.value,
+            peso: form.peso.value,
+            altura: form.altura.value,
+            gordura: form.gordura.value,
             imc: calculaImc(form.peso.value, form.altura.value)
         }
         return paciente
@@ -74,7 +75,7 @@ let botaoAdicionar = document.querySelector("#adicionar-paciente")
         if(!validaAltura(paciente.altura)){
             erros.push("Altura é inválida")
         }
-        
+
         return erros;
     }
 
@@ -82,11 +83,10 @@ let botaoAdicionar = document.querySelector("#adicionar-paciente")
     function exibeMensagensDeErro(erros) {
         var ul = document.querySelector("#mensagens-erro");
         ul.innerHTML = "";
-    
+
         erros.forEach(function(erro) {
             var li = document.createElement("li");
             li.textContent = erro;
             ul.appendChild(li);
         });
     }
-   
