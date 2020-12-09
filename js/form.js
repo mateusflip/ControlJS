@@ -4,7 +4,7 @@ let botaoAdicionar = document.querySelector("#adicionar-paciente")
 
       let form = document.querySelector ("#form-adiciona")
         let paciente = obtemPaciente(form)
-        let pacienteTr = montaTr(paciente)
+
 
         let erros = validaPaciente(paciente)
             if(erros.length >0){
@@ -12,14 +12,20 @@ let botaoAdicionar = document.querySelector("#adicionar-paciente")
                 return;
             }
 
+            adicionaPacienteNaTabela(paciente);
 
-        let tabela = document.querySelector("#tabela-pacientes")
-        tabela.appendChild(pacienteTr)
+
       form.reset()
 
       var mensagensErro = document.querySelector("#mensagens-erro");
             mensagensErro.innerHTML = "";
     })
+
+    function adicionaPacienteNaTabela(paciente){
+      let pacienteTr = montaTr(paciente)
+      let tabela = document.querySelector("#tabela-pacientes")
+        tabela.appendChild(pacienteTr)
+    }
 
     function obtemPaciente(form){
         let paciente = {
